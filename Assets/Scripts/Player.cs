@@ -39,9 +39,8 @@ public class Player : MonoBehaviour, IDamageble
             _health -= damage;
         }
         
-        if (_health <= 0)
+        if (_health == 0)
         {
-            _audio.PlayOneShot(_lose);
             Death();
         }
     }
@@ -49,6 +48,7 @@ public class Player : MonoBehaviour, IDamageble
     private void Death()
     {
         _isDeath = true;
+        _audio.PlayOneShot(_lose);
         Invoke("Pause", 1f);
     }
 

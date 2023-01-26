@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IDamageble
     [SerializeField] private float _speed;
     public AudioSource Audio;
     public Transform TargetDestination;
+    public Action OnDead;
     
 
     private Rigidbody2D _rigidbody;
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour, IDamageble
 
     private void Death()
     {
+        OnDead.Invoke();
         _isDead = true;
         Destroy(gameObject);
     }
